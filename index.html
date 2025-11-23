@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="#" />
+    <title>GSTIN Predictor</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <meta name="robots" content="index, follow">
+    <meta http-equiv="X-Frame-Options" content="DENY">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+
+    <meta name="title" content="GSTIN Predictor" />
+    <meta name="description" content="Generate and validate your GSTIN instantly using your PAN Number." />
+
+
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="#" />
+    <meta property="og:title" content="GSTIN Predictor" />
+    <meta property="og:description" content="Generate and validate your GSTIN instantly using your PAN Number." />
+    <meta property="og:image" content="#" />
+
+
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="#" />
+    <meta property="twitter:title" content="GSTIN Predictor" />
+    <meta property="twitter:description" content="Generate and validate your GSTIN instantly using your PAN Number." />
+    <meta property="twitter:image" content="#" />
+
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .fade-in {
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+
+<body class="bg-white min-h-screen">
+
+    <main class="container mx-auto px-4 py-10">
+        <div class="bg-white p-4 fade-in max-w-xl mx-auto">
+            <header class="text-center mb-8 mt-6 md:mt-12">
+                <h2 class="text-3xl font-semibold text-black mb-4">GSTIN Predictor</h2>
+                <p class="text-gray-700 text-lg">Generate and validate your GSTIN based on your PAN</p>
+            </header>
+
+            <form id="gstinForm" novalidate class="space-y-6">
+
+                <div>
+                    <label for="state" class="block text-sm font-medium text-gray-700 mb-2">Select State Name</label>
+                    <select id="state" name="state"
+                        class="block w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 transition duration-200 appearance-none"
+                        required>
+                        <option value="">-- Select State --</option>
+                        <option value="35">Andaman and Nicobar</option>
+                        <option value="37">Andhra Pradesh</option>
+                        <option value="12">Arunachal Pradesh</option>
+                        <option value="18">Assam</option>
+                        <option value="10">Bihar</option>
+                        <option value="04">Chandigarh</option>
+                        <option value="22">Chhattisgarh</option>
+                        <option value="26">Dadra and Nagar Haveli & Daman and Diu</option>
+                        <option value="07">Delhi</option>
+                        <option value="30">Goa</option>
+                        <option value="24">Gujarat</option>
+                        <option value="06">Haryana</option>
+                        <option value="02">Himachal Pradesh</option>
+                        <option value="20">Jharkhand</option>
+                        <option value="01">Jammu & Kashmir</option>
+                        <option value="29">Karnataka</option>
+                        <option value="32">Kerala</option>
+                        <option value="38">Ladakh</option>
+                        <option value="31">Lakshadweep</option>
+                        <option value="27">Maharashtra</option>
+                        <option value="14">Manipur</option>
+                        <option value="23">Madhya Pradesh</option>
+                        <option value="17">Meghalaya</option>
+                        <option value="15">Mizoram</option>
+                        <option value="13">Nagaland</option>
+                        <option value="21">Odisha</option>
+                        <option value="34">Puducherry</option>
+                        <option value="03">Punjab</option>
+                        <option value="08">Rajasthan</option>
+                        <option value="11">Sikkim</option>
+                        <option value="33">Tamil Nadu</option>
+                        <option value="36">Telangana</option>
+                        <option value="16">Tripura</option>
+                        <option value="05">Uttarakhand</option>
+                        <option value="09">Uttar Pradesh</option>
+                        <option value="19">West Bengal</option>
+                        <option value="97">Other Territory</option>
+                        <option value="99">Other Country</option>
+
+                        <!--<option value="01">01-Jammu & Kashmir</option>
+                        <option value="02">02-Himachal Pradesh</option>
+                        <option value="03">03-Punjab</option>
+                        <option value="04">04-Chandigarh</option>
+                        <option value="05">05-Uttarakhand</option>
+                        <option value="06">06-Haryana</option>
+                        <option value="07">07-Delhi</option>
+                        <option value="08">08-Rajasthan</option>
+                        <option value="09">09-Uttar Pradesh</option>
+                        <option value="10">10-Bihar</option>
+                        <option value="11">11-Sikkim</option>
+                        <option value="12">12-Arunachal Pradesh</option>
+                        <option value="13">13-Nagaland</option>
+                        <option value="14">14-Manipur</option>
+                        <option value="15">15-Mizoram</option>
+                        <option value="16">16-Tripura</option>
+                        <option value="17">17-Meghalaya</option>
+                        <option value="18">18-Assam</option>
+                        <option value="19">19-West Bengal</option>
+                        <option value="20">20-Jharkhand</option>
+                        <option value="21">21-Odisha</option>
+                        <option value="22">22-Chhattisgarh</option>
+                        <option value="23">23-Madhya Pradesh</option>
+                        <option value="24">24-Gujarat</option>
+                        <option value="26">26-Dadra and Nagar Haveli & Daman and Diu</option>
+                        <option value="27">27-Maharashtra</option>
+                        <option value="29">29-Karnataka</option>
+                        <option value="30">30-Goa</option>
+                        <option value="31">31-Lakshadweep</option>
+                        <option value="32">32-Kerala</option>
+                        <option value="33">33-Tamil Nadu</option>
+                        <option value="34">34-Puducherry</option>
+                        <option value="35">35-Andaman and Nicobar</option>
+                        <option value="36">36-Telangana</option>
+                        <option value="37">37-Andhra Pradesh</option>
+                        <option value="38">38-Ladakh</option>
+                        <option value="97">97-Other Territory</option>
+                        <option value="99">99-Other Country</option>-->
+                    </select>
+                    <div id="stateAlert" class="text-red-500 text-sm mt-2 hidden"></div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <label for="pan" class="block text-sm font-medium text-gray-700 mb-2">Enter PAN Number</label>
+                        <input type="text" id="pan" name="pan" maxlength="10" pattern="[A-Z]{5}[0-9]{4}[A-Z]{1}"
+                            autocomplete="off" inputmode="text" placeholder="ABCDE1234F"
+                            class="block w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 transition duration-200"
+                            required>
+                        <div id="panAlert" class="text-red-500 text-sm mt-2 hidden"></div>
+                        <div id="entityType" class="text-indigo-600 text-sm mt-2 hidden font-medium"></div>
+                    </div>
+
+                    <div>
+                        <label for="registrationNo" class="block text-sm font-medium text-gray-700 mb-2">Number of
+                            Registration</label>
+                        <select id="registrationNo" name="registrationNo"
+                            class="block w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 transition duration-200 appearance-none"
+                            required>
+                            <option value="1" selected>1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                        </select>
+                    </div>
+                </div>
+
+                <button type="submit" id="predictBtn"
+                    class="w-full bg-indigo-600 text-white py-3 px-6 rounded-lg font-semibold hover:bg-indigo-700 transition duration-200 disabled:bg-gray-400 disabled:cursor-not-allowed">
+                    Predict Your GSTIN
+                </button>
+            </form>
+
+            <div id="result"
+                class="mt-6 p-4 bg-green-100 border border-green-300 rounded-lg text-green-800 hidden font-mono text-lg flex justify-center items-center gap-2">
+                <span id="gstinText"></span>
+                <button id="copyBtn" class="text-green-700 hover:text-green-900 transition duration-200"
+                    title="Copy GSTIN">
+                    📋
+                </button>
+            </div>
+
+            <footer class="bg-white border-t border-gray-200 text-center py-4 text-gray-500 text-sm">Your data is
+                processed locally in your browser and is not stored or shared. Your privacy is our priority.
+            </footer>
+</body>
+
+</div>
+<script>
+    (function () {
+        const panInput = document.getElementById('pan');
+        const panAlert = document.getElementById('panAlert');
+        const entityTypeDiv = document.getElementById('entityType');
+        const stateSelect = document.getElementById('state');
+        const registrationSelect = document.getElementById('registrationNo');
+        const form = document.getElementById('gstinForm');
+        const resultDiv = document.getElementById('result');
+        const predictBtn = document.getElementById('predictBtn');
+
+        const entityTypes = {
+            'P': 'Person (Individual / Proprietorship)',
+            'C': 'Company',
+            'H': 'HUF (Hindu Undivided Family)',
+            'F': 'Firm',
+            'A': 'AOP (Association of Persons)',
+            'T': 'Trust',
+            'B': 'BOI (Body of Individuals)',
+            'L': 'Local Authority',
+            'J': 'Artificial Juridical Person',
+            'G': 'Government'
+        };
+
+        const panRegex = /^[A-Z]{5}[0-9]{4}[A-Z]{1}$/;
+
+        panInput.addEventListener('input', function (e) {
+            let val = panInput.value.toUpperCase();
+            val = val.replace(/[^A-Z0-9]/g, '');
+            panInput.value = val;
+
+            panAlert.style.display = 'none';
+            entityTypeDiv.style.display = 'none';
+            resultDiv.style.display = 'none';
+
+            if (val.length === 10) {
+                if (panRegex.test(val)) {
+                    const entityChar = val.charAt(3);
+                    const entity = entityTypes[entityChar];
+                    if (entity) {
+                        entityTypeDiv.textContent = 'Entity Type: ' + entity;
+                        entityTypeDiv.style.display = 'block';
+                        entityTypeDiv.style.color = '#6366f1';
+                        panAlert.style.display = 'none';
+                    } else {
+
+                        entityTypeDiv.style.display = 'none';
+                        panAlert.textContent = 'Invalid PAN Number';
+                        panAlert.style.display = 'block';
+                    }
+                } else {
+
+                    panAlert.textContent = 'Invalid PAN Number';
+                    panAlert.style.display = 'block';
+                    entityTypeDiv.style.display = 'none';
+                }
+            } else {
+                panAlert.style.display = 'none';
+                entityTypeDiv.style.display = 'none';
+            }
+        });
+
+        // GSTIN validation function
+        function isValidGSTIN(gstn) {
+            if (!/^(0[1-9]|[1-2][0-9]|3[0-7])[A-Z]{3}([ABCFGHLJPT])[A-Z][0-9]{4}[A-Z][1-9][Z][0-9A-Z]$/g.test(gstn))
+                return "Invalid";
+
+            let gstnCodepointChars = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+            let factor = 2, sum = 0, checkCodePoint = 0;
+            let mod = gstnCodepointChars.length;
+
+            for (let i = gstn.length - 2; i >= 0; i--) {
+                let codePoint = gstnCodepointChars.indexOf(gstn.charAt(i));
+                let digit = factor * codePoint;
+                factor = factor == 2 ? 1 : 2;
+                digit = Math.floor(digit / mod) + (digit % mod);
+                sum += digit;
+            }
+
+            checkCodePoint = (mod - (sum % mod)) % mod;
+            let checksumCharacter = gstnCodepointChars.charAt(checkCodePoint);
+            return gstn.substring(14, 15) === checksumCharacter ? "Valid" : "Invalid";
+        }
+
+        function isPanValid(pan) {
+            if (pan.length !== 10 || !panRegex.test(pan)) return false;
+            const entityChar = pan.charAt(3);
+            return entityTypes.hasOwnProperty(entityChar);
+        }
+
+
+        form.addEventListener('submit', function (e) {
+            e.preventDefault();
+            resultDiv.style.display = 'none';
+
+            const stateCode = stateSelect.value;
+            const pan = panInput.value.toUpperCase();
+            const regNo = registrationSelect.value;
+
+            const stateAlert = document.getElementById('stateAlert');
+
+
+            if (!stateCode) {
+                stateAlert.textContent = 'Please select a State.';
+                stateAlert.style.display = 'block';
+                stateSelect.focus();
+                return;
+            } else {
+                stateAlert.style.display = 'none';
+            }
+
+
+            if (!isPanValid(pan)) {
+                panInput.focus();
+                panAlert.textContent = 'Invalid PAN Number.';
+                panAlert.style.display = 'block';
+                entityTypeDiv.style.display = 'none';
+                return;
+            }
+
+            panAlert.style.display = 'none';
+            entityTypeDiv.style.display = 'block';
+
+            const gstinWithoutChecksum = stateCode + pan + regNo + 'Z';
+            const gstnCodepointChars = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+            let factor = 2, sum = 0, mod = gstnCodepointChars.length;
+
+            for (let i = gstinWithoutChecksum.length - 1; i >= 0; i--) {
+                let codePoint = gstnCodepointChars.indexOf(gstinWithoutChecksum.charAt(i));
+                let digit = factor * codePoint;
+                factor = factor === 2 ? 1 : 2;
+                digit = Math.floor(digit / mod) + (digit % mod);
+                sum += digit;
+            }
+
+            let checkCodePoint = (mod - (sum % mod)) % mod;
+            let checksumCharacter = gstnCodepointChars.charAt(checkCodePoint);
+
+            const predictedGSTIN = gstinWithoutChecksum + checksumCharacter;
+
+            const gstinText = document.getElementById('gstinText');
+            const copyBtn = document.getElementById('copyBtn');
+
+            if (isValidGSTIN(predictedGSTIN) === "Valid") {
+                const displayText = 'Your Predicted GSTIN is: ' + predictedGSTIN;
+                gstinText.textContent = displayText;
+                gstinText.dataset.gstin = predictedGSTIN;
+                resultDiv.style.color = '#15803d';
+                resultDiv.style.display = 'flex';
+            } else {
+                gstinText.textContent = 'Failed to generate a valid GSTIN. Please check your inputs.';
+                gstinText.dataset.gstin = '';
+                resultDiv.style.color = '#dc2626';
+                resultDiv.style.display = 'flex';
+            }
+
+            copyBtn.onclick = () => {
+                const gstinToCopy = gstinText.dataset.gstin;
+                if (gstinToCopy) {
+                    navigator.clipboard.writeText(gstinToCopy).then(() => {
+                        copyBtn.textContent = '✅';
+                        setTimeout(() => { copyBtn.textContent = '📋'; }, 1500);
+                    });
+                }
+            };
+
+        });
+
+        document.querySelector('.fade-in').classList.add('fade-in');
+    })();
+</script>
+</body>
+
+</html>
